@@ -21,5 +21,14 @@ class StudentData(models.Model):
 
     student_class = models.PositiveIntegerField(choices=[(i, i) for i in range(1, 13)])
 
+    def total_score(self):
+        return (
+            self.score_subject1 +
+            self.score_subject2 +
+            self.score_subject3 +
+            self.score_subject4 +
+            self.score_subject5
+        )
+
     def __str__(self) -> str:
         return self.student_name
