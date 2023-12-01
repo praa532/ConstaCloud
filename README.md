@@ -97,6 +97,34 @@ templates/: HTML templates (if using Django templates).
     ```bash
     python manage.py runserver
 
+## Access the API endpoints:
+
+# API-style response for students:
+
+- /getstudents?class=4: Retrieve a list of students for a specific class in API-style response.
+
+- Example:
+
+    ```bash
+    curl http://localhost:8000/getstudents?class=4
+    
+1. HTML-rendered page for students:
+
+- /renderedstudents?class=4: View a paginated HTML-rendered page of students for a specific class.
+
+- Example:
+
+Open http://localhost:8000/getstudents?class=4 in your browser.
+
+API-style response with data selection for students:
+
+- /getstudents?data=name,roll,score,total,class: Retrieve a list of students in API-style response with specific data fields.
+
+- Example:
+
+    ```bash
+    curl http://localhost:8000/getstudents?data=name,roll,score,total,class
+
 2. Access the admin interface at http://localhost:8000/admin/ using the superuser credentials created during installation.
 
 3. Access API endpoints at http://localhost:8000/
@@ -104,8 +132,8 @@ templates/: HTML templates (if using Django templates).
 4. Access API endpoints at http://localhost:8000/getstudents
 
 ## API Endpoints
-/: Create students
-getstudents/: List students.
+1. /: Create students
+2. getstudents/: List students.
 
 ## Contributing
 
