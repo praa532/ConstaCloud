@@ -1,0 +1,56 @@
+<!-- students_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students List</title>
+</head>
+<body>
+
+  <h2>Students List</h2>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll Number</th>
+        <th>Subject 1</th>
+        <th>Subject 2</th>
+        <th>Subject 3</th>
+        <th>Subject 4</th>
+        <th>Subject 5</th>
+        <th>Score_Subject_1</th>
+        <th>Score_Subject_2</th>
+        <th>Score_Subject_3</th>
+        <th>Score_Subject_4</th>
+        <th>Score_Subject_5</th>
+        <th>Total Score</th>
+        <th>Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+        <tr>
+          <td>{{ student.student_name }}</td>
+          <td>{{ student.roll_no }}</td>
+          <td>{{ student.subject1 }}</td>
+          <td>{{ student.subject2 }}</td>
+          <td>{{ student.subject3 }}</td>
+          <td>{{ student.subject4 }}</td>
+          <td>{{ student.subject5 }}</td>
+          <td>{{ student.score_subject1 }}</td>
+          <td>{{ student.score_subject2 }}</td>
+          <td>{{ student.score_subject3 }}</td>
+          <td>{{ student.score_subject4 }}</td>
+          <td>{{ student.score_subject5 }}</td>
+          <td>{{ student.total_score }}</td>
+          <td>{{ student.student_class }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>

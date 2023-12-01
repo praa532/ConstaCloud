@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from .serializers import StudentSerializer
 from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination 
 # Create your views here.
 
 @login_required(login_url='login')
@@ -19,22 +20,48 @@ def HomePage(request):
         form = StudentForm()
 
     return render(request, 'home.html', {'form': form})
+    
+
+class CustomPageNumberPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 class GetStudentsView(generics.ListAPIView):
     serializer_class = StudentSerializer
+    pagination_class = CustomPageNumberPagination
 
     def get_queryset(self):
         class_param = self.request.query_params.get('class', None)
-        data_param = self.request.query_params.get('data', None)
 
         queryset = StudentData.objects.all()
 
         if class_param:
             queryset = queryset.filter(student_class=class_param)
 
-        queryset = sorted(queryset, key=lambda student: student.total_score(), reverse=True)   
+        queryset = sorted(queryset, key=lambda student: student.total_score(), reverse=True)
 
         return queryset
+
+class GetStudentsView(generics.ListAPIView):
+    serializer_class = StudentSerializer
+    pagination_class = CustomPageNumberPagination
+    template_name = 'students_list.html'
+
+    def get_queryset(self):
+        class_param = self.request.query_params.get('class', None)
+
+        queryset = StudentData.objects.all()
+
+        if class_param:
+            queryset = queryset.filter(student_class=class_param)
+
+        queryset = sorted(queryset, key=lambda student: student.total_score(), reverse=True)
+
+        return queryset
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'students': self.paginate_queryset(self.get_queryset())})
 
 
 
