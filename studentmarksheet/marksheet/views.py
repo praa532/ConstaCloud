@@ -20,8 +20,25 @@ def HomePage(request):
         form = StudentForm()
 
     return render(request, 'home.html', {'form': form})
-    
 
+'''If you want a DRF view uncomment the below code'''
+
+# class GetStudentsView(generics.ListAPIView):
+#     serializer_class = StudentSerializer
+
+#     def get_queryset(self):
+#         class_param = self.request.query_params.get('class', None)
+
+#         queryset = StudentData.objects.all()
+
+#         if class_param:
+#             queryset = queryset.filter(student_class=class_param)
+
+#         queryset = sorted(queryset, key=lambda student: student.total_score(), reverse=True)
+
+#         return queryset
+
+# And comment this code below.
 class CustomPageNumberPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
