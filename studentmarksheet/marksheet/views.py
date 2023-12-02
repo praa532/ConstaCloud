@@ -21,7 +21,8 @@ def HomePage(request):
 
     return render(request, 'home.html', {'form': form})
 
-'''If you want a DRF view uncomment the below code'''
+
+'''If you want a DRF view uncomment the below code.'''
 
 # class GetStudentsView(generics.ListAPIView):
 #     serializer_class = StudentSerializer
@@ -38,7 +39,7 @@ def HomePage(request):
 
 #         return queryset
 
-'''And comment this code below.'''
+
 class CustomPageNumberPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'

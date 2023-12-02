@@ -26,6 +26,7 @@
         <th>Score_Subject_3</th>
         <th>Score_Subject_4</th>
         <th>Score_Subject_5</th>
+        <th>Photo</th>
         <th>Total Score</th>
         <th>Class</th>
       </tr>
@@ -45,6 +46,7 @@
           <td>{{ student.score_subject3 }}</td>
           <td>{{ student.score_subject4 }}</td>
           <td>{{ student.score_subject5 }}</td>
+          <td><a href="http://127.0.0.1:8000/media/{{ student.image }}" target="_blank">{{ student.image }}</a></td>
           <td>{{ student.total_score }}</td>
           <td>{{ student.student_class }}</td>
         </tr>
