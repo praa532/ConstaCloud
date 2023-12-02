@@ -15,7 +15,7 @@ def HomePage(request):
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to a success page or another URL
+            return redirect('home')  # Redirect to a home page
     else:
         form = StudentForm()
 
@@ -38,7 +38,7 @@ def HomePage(request):
 
 #         return queryset
 
-# And comment this code below.
+'''And comment this code below.'''
 class CustomPageNumberPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
@@ -98,7 +98,7 @@ def HomePage2(request):
             if request.is_ajax():
                 return JsonResponse({'success': True, 'message': 'Form submitted successfully!'})
             else:
-                return redirect('home2')  # Redirect to a success page or another URL
+                return redirect('home2')  # Redirect to home page
     else:
         form = StudentForm()
 
