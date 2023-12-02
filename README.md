@@ -129,7 +129,7 @@ API-style response with data selection for students:
 
 3. Access API endpoints at http://localhost:8000/
 
-4. Access API endpoints at http://localhost:8000/users/signup
+4. Access API endpoints at http://localhost:8000/users/register
 
 4. Access API endpoints at http://localhost:8000/users/login
 
@@ -137,7 +137,7 @@ API-style response with data selection for students:
 
 
 ## API Endpoints
-1. /users/signup/: Create an account.
+1. /users/register/: Create an account.
 2. /users/login/ : Login to access the data and modify
 3. /: Create students
 4. getstudents/: List students.
