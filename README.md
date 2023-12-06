@@ -110,7 +110,7 @@ templates/: HTML templates (if using Django templates).
     
 1. HTML-rendered page for students:
 
-- /renderedstudents?class=4: View a paginated HTML-rendered page of students for a specific class.
+- /getstudents?class=4: View a paginated HTML-rendered page of students for a specific class.
 
 - Example:
 
