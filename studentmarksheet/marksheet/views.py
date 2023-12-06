@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 from marksheet.models import StudentData
 from .forms import StudentForm
 from django.http import JsonResponse
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import authentication_classes, permission_classes
 from django.views.decorators.csrf import csrf_protect
 from .serializers import StudentSerializer
 from rest_framework import generics
@@ -39,7 +42,8 @@ def HomePage(request):
 
 #         return queryset
 
-
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 class CustomPageNumberPagination(PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
@@ -65,7 +69,7 @@ class GetStudentsView(generics.ListAPIView):
     serializer_class = StudentSerializer
     pagination_class = CustomPageNumberPagination
     template_name = 'students_list.html'
-
+    
     def get_queryset(self):
         class_param = self.request.query_params.get('class', None)
 
